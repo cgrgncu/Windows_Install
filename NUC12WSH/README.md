@@ -18,3 +18,5 @@
 + ASUS驅動包: NUC12WS_non-vPro_INF_Pack_6_28_2024.zip
   + 網址: https://www.asus.com/tw/displays-desktops/nucs/nuc-mini-pcs/nuc-12-pro-mini-pc-for-zoom-room/helpdesk_download/?model2Name=NUC-12-Pro-Mini-PC-for-Zoom-Room
   + 要從WIN 11下載，WIN10照樣可以用WIN11的這個安裝包，但是必須使用管理員身分執行BATCH檔。
+
+### 停止WINDOWS更新
