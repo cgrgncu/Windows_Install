@@ -1,0 +1,7 @@
+# NUC12WSH 安裝說明
+
+### 簡介
++ 主機名稱: ASUS NUC PRO
++ MODEL: NUC12WSH
++ CPU: INTEL 1260P
++ 
