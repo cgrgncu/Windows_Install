@@ -4,8 +4,8 @@
 + 主機名稱: ASUS NUC PRO
 + MODEL: NUC12WSH
 + CPU: INTEL 1260P
-+ RAM:16GB(2024-08買的這批)
-+ SSD: 500GB(2024-08買的這批)
++ RAM:16GB(2024-08買的這批，10台)
++ SSD: 500GB(2024-08買的這批，10台)
 
 
 ### 安裝用USB製作
