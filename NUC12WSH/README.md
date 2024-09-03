@@ -7,6 +7,13 @@
 + RAM:16GB(2024-08買的這批，10台)
 + SSD: 500GB(2024-08買的這批，10台)
 
+#### R2MS_Lite_S000
++ R2MS Lite 儀器生產測試專用主機
++ Serial Number: S4ARAC01F483FWW
+
+
+
+
 
 ### 安裝用USB製作
 + 使用工具: rufus-4.5.exe
