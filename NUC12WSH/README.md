@@ -28,6 +28,10 @@
   + 網址: https://www.asus.com/tw/displays-desktops/nucs/nuc-mini-pcs/nuc-12-pro-mini-pc-for-zoom-room/helpdesk_download/?model2Name=NUC-12-Pro-Mini-PC-for-Zoom-Room
   + 要從WIN 11下載，WIN10照樣可以用WIN11的這個安裝包，但是必須使用管理員身分執行BATCH檔。
 
+### 離線安裝
++ 不要連接網路
++ 隱私權關閉
+
 ### 停止WINDOWS更新
 + 用REG檔案暫停更新直到2100年
 
