@@ -7,6 +7,11 @@
 + RAM:16GB(2024-08買的這批，10台)
 + SSD: 500GB(2024-08買的這批，10台)
 
+#### CGRG_PRINTER_USER
++ CGRG 印表機專用主機
++ 電腦主機Serial Number: S4ARAC01F4655TF
++ 變壓器S/N: B3VW43N02D6 ，側邊條碼: 0432-05MF200412002627 ，電線條碼: 1411-028K000X1239S0210
+
 #### R2MS_Lite_S000
 + R2MS Lite 儀器生產測試專用主機
 + 電腦主機Serial Number: S4ARAC01F483FWW
