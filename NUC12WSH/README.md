@@ -57,13 +57,13 @@
 + 資料夾>資料夾選項>關閉隱私
 + 資料夾>資料夾選項>顯示副檔名
 + Edge>設定>隱私權>網址列與搜尋>GoogleTW(google.com.tw)(https://www.google.com.tw/search?q=%s)
-
 + 安裝「Chrome」。釘選到工作列。有網路再裝。
 + 安裝「Notepad++」。釘選到工作列。關閉自動更新。
 + 小畫家釘選到工作列。
 + 小算盤釘選到工作列。
-+ 安裝「VirtualBox6.1」
++ 安裝「VirtualBox6.1」。
 + https://recordscreen.io/ 加到我的最愛
++ 安裝「office 2019」。
 
 ### 連接網路後開始部分設定
 + 啟用Windows (可以先略過，之後找時間處理)
