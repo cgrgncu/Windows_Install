@@ -65,6 +65,9 @@
 + https://recordscreen.io/ 加到我的最愛
 + 安裝「office 2019」。
 
+### 設定BIOS
++ 「Power,Performance and Cooling > Secondary Power Settings > After Power Failure」 = 「Last State」
+
 ### 連接網路後開始部分設定
 + 啟用Windows (可以先略過，之後找時間處理)
   + 啟用後重新命名電腦。設定>系統>關於>重新命名電腦。設為使用者帳號，但底線改為減號。
