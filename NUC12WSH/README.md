@@ -75,3 +75,4 @@
 + 之前沒安裝到「Chrome」的話記得裝一下。
 + 安裝「rustdesk」，並設定ID Server。
   + CGRG_PRINTER
+    + 預設顯示方式: 適應視窗。
