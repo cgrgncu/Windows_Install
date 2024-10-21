@@ -32,7 +32,7 @@
     + REF2: https://schneegans.de/windows/unattend-generator/
 + ASUS驅動包: NUC12WS_non-vPro_INF_Pack_6_28_2024.zip
   + 網址: https://www.asus.com/tw/displays-desktops/nucs/nuc-mini-pcs/nuc-12-pro-mini-pc-for-zoom-room/helpdesk_download/?model2Name=NUC-12-Pro-Mini-PC-for-Zoom-Room
-  + 要從WIN 11下載，WIN10照樣可以用WIN11的這個安裝包，但是必須使用管理員身分執行BATCH檔。
+  + 要從WIN11下載，WIN10照樣可以用WIN11的這個安裝包，但是必須使用管理員身分執行BATCH檔。
 
 ### 離線安裝
 + 安裝企業版
@@ -68,10 +68,12 @@
 + 「Power,Performance and Cooling > Secondary Power Settings > After Power Failure」 = 「Last State」
 
 ### 連接網路後開始部分設定
++ 之前沒安裝到「Chrome」的話記得裝一下。
+  + 安裝「rustdesk」，並設定ID Server。自訂ID清單:
+    + CGRG_PRINTER
 + 啟用Windows (可以先略過，之後找時間處理)
   + 啟用後重新命名電腦。設定>系統>關於>重新命名電腦。設為使用者帳號，但底線改為減號。
 + 安裝印表機軟體 (可以先略過，之後找時間處理)
-+ 之前沒安裝到「Chrome」的話記得裝一下。
-+ 安裝「rustdesk」，並設定ID Server。
-  + CGRG_PRINTER
+
+
     
