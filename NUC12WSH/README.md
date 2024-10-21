@@ -74,3 +74,4 @@
 + 安裝印表機軟體 (可以先略過，之後找時間處理)
 + 之前沒安裝到「Chrome」的話記得裝一下。
 + 安裝「rustdesk」，並設定ID Server。
+  + CGRG_PRINTER
