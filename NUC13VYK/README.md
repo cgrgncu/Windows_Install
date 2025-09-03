@@ -1,7 +1,8 @@
-# NUC13VYKi70QC 安裝說明
+# NUC13VYKi70QA 安裝說明
 
 ## 簡介
 + 主機名稱: NUC 13 Pro Desk Edition Mini PC
++ Product Code: NUC13VYKi70QA
 + MODEL: NUC13VYK
 + CPU: Intel Core i7-1360P
 + RAM:64GB(2025-09買的這批，5台)
