@@ -13,26 +13,13 @@
 ## 主機清單
 ### DataCenter_S000
 + R2MS Lite S000儀器對應使用的資料處理專用主機
-+ 電腦主機Serial Number: S4ARAC01F483FWW
++ 電腦主機Serial Number: BTAN331001ZF
 + 變壓器，側邊條碼: 0432-05XL0IN330000811 ，電線條碼: 1411-0348000X1232F07TM
 
-### R2MS_Lite_S000
-+ R2MS Lite 儀器生產測試專用主機
-+ 電腦主機Serial Number: S4ARAC01F483FWW
-+ 變壓器S/N: B3VW43N02DN ，側邊條碼: 0432-05MF200412002644 ，電線條碼: 1411-028K000X1239S0544
-
-### TAIP_DataCenter
-+ 太平山地電阻法連續觀測站資料分析專用主機
-+ 電腦主機Serial Number: S4ARAC01F468BEX
-+ 變壓器S/N: B3VW43N02D7 ，側邊條碼: 0432-05MF200412002625 ，電線條碼: 1411-028K000X1243C1267
-+ 財產單據: 11309A3071
-+ 財產編號: 3140101-03-40091
-
-### R2MS_Lite_S004
-+ R2MS Lite S004專用主機
-+ 電腦主機Serial Number: S4ARAC01F0239ZN
-+ 變壓器S/N: B3VW43N0294 ，側邊條碼: 0432-05MF200412002507 ，電線條碼: 1411-028K000X1243C1698
-+ 2025-08-07重灌
+### DataCenter_S003
++ R2MS Lite S003儀器對應使用的資料處理專用主機
++ 電腦主機Serial Number: BTAN33100264
++ 變壓器，側邊條碼: 0432-05XL0IN330002278 ，電線條碼: 1411-0348000X1232F07UQ
   
 ## 安裝步驟
 ### 安裝用USB製作
