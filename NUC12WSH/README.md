@@ -99,8 +99,11 @@
   + 進去「Users」設定:
     + http://localhost:8080/web/admin/user
     + 按右上的「add」。
-    + 建立使用者的「Username」填「CGRG_S007」，「Password」填「4500」，「File system>Root directory」填「C:\R2MS_Lite_Smart_Scheduler\Local」。
-    + 到這裡，8080網頁可以開啟，可以用使用者帳戶登入進去。登進去會擁有所有的讀寫權限，務必小心使用。
+    + 建立使用者的「Username」填「CGRG_S007」，「Password」填「4500」，「File system>Root directory」填「C:\R2MS_Lite_Smart_Scheduler\Local」。記得要SAVE。
+    + 到這裡，8080網頁可以開啟，可以用使用者帳戶登入進去。登進去會擁有所有的讀寫權限。
+    + 找到剛剛建立的使用者「CGRG_S007」，然後最右邊下拉選單選擇「Edit」。
+    + 修改「ACLs>Permissions」移除原有的「*」，用下拉選單選出「list」與「download」。記得要SAVE。
+    + 到這裡，8080網頁可以開啟，可以用使用者帳戶登入進去。登進去會擁有所有的唯讀權限。
 ### USER (晶晶使用)
 + 晶晶個人使用主機
 + 電腦主機Serial Number: S4ARAC01F455BPN
