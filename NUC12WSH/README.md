@@ -79,7 +79,14 @@
   + 後續照標準方式繼續設定。
 + 安裝LITE相關軟體包含排程及看CSV。建立捷徑。
 + RUSTDESK弄好。
-+ 安裝FTP SERVER。
++ 安裝XAMPP(xampp-windows-x64-7.4.27-2-VC15-installer.exe):
+  + 我們需要用他的HTTP SERVE，占用HTTP的80與HTTPS的443。要自己啟用為服務。
+  + 我們需要用他的FTP SERVER。占用FTP的21。要自己啟用為服務。
+  + 預設登入管理者維持不設定密碼，僅有本機可以連線到。
+  + 建立登入的使用者「CGRG_S007」及密碼「4500」，根目錄「C:\R2MS_Lite_Smart_Scheduler\Local」，權限唯讀。
++ 安裝SFTPGO(sftpgo_v2.7.3_windows_x86_64.exe):
+  + 我們只要用他的SFTP，占用SFTP的2022。另外其管理介面會占用8080。
+  + 安裝好後，第一次登入進入管理介面「http://localhost:8080/web/admin」，會被要求設定管理員帳號密碼。建議管理員帳號為「admin」密碼為「1234」。
 
 ### USER (晶晶使用)
 + 晶晶個人使用主機
