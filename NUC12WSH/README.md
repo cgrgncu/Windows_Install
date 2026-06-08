@@ -90,13 +90,17 @@
     + http://localhost:8080/web/admin
     + 會被要求設定管理員帳號密碼。建議管理員帳號為「admin」密碼為「1234」。
   + 目前為止我不確定原因但似乎我沒有被防火牆擋住，因此區域網路的人就可以連接8080網頁。
-  + 立刻進去檢查「admin」設定:
+  + 立刻進去檢查「Admin」設定:
     + http://localhost:8080/web/admin/managers
     + 找到剛剛建立的使用者「admin」，然後最右邊下拉選單選擇「Edit」。
     + 要把這個帳號限制只有本機才能登入成功:
       + 在「Allowed IP/Mask」填入「127.0.0.1/32,::1/128」。
       + 到這裡，雖然8080網頁可以開啟，但是管理員帳號只有本機才登入的進去。
-
+  + 進去「Users」設定:
+    + http://localhost:8080/web/admin/user
+    + 按右上的「add」。
+    + 建立使用者的「Username」填「CGRG_S007」，「Password」填「4500」，「File system>Root directory」填「C:\R2MS_Lite_Smart_Scheduler\Local」。
+    + 到這裡，8080網頁可以開啟，可以用使用者帳戶登入進去。登進去會擁有所有的讀寫權限，務必小心使用。
 ### USER (晶晶使用)
 + 晶晶個人使用主機
 + 電腦主機Serial Number: S4ARAC01F455BPN
