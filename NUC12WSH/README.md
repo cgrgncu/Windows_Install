@@ -104,6 +104,20 @@
     + 找到剛剛建立的使用者「CGRG_S007」，然後最右邊下拉選單選擇「Edit」。
     + 修改「ACLs>Permissions」移除原有的「*」，用下拉選單選出「list」與「download」。記得要SAVE。
     + 到這裡，8080網頁可以開啟，可以用使用者「CGRG_S007」登入進去。登進去只有唯讀權限。
++ 在桌面上放一個README.txt
+```
+FTP已經設定用戶:
+USERNAME: CGRG_S007
+PASSWORD: 45002931
+唯讀
+根目錄為Local資料夾
+
+SFTP已經設定用戶:
+USERNAME: CGRG_S007
+PASSWORD: 45002931
+唯讀
+根目錄為Local資料夾
+```
 ### USER (晶晶使用)
 + 晶晶個人使用主機
 + 電腦主機Serial Number: S4ARAC01F455BPN
