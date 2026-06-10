@@ -90,7 +90,7 @@
   + 修改「設定>網路」:
     + 「ID伺服器」填「140.115.21.20」。這會修改%AppData%\RustDesk\config\RustDesk.toml檔案。這會修改%AppData%\RustDesk\config\RustDesk2.toml檔案。這會修改C:\Windows\ServiceProfiles\LocalService\AppData\Roaming\RustDesk\config\RustDesk2.toml檔案。
 + 安裝XAMPP(xampp-windows-x64-7.4.27-2-VC15-installer.exe):
-  + 我們需要用他的HTTP SERVE，占用HTTP的80與HTTPS的443。要自己啟用為服務。
+  + 我們需要用他的HTTP SERVER，占用HTTP的80與HTTPS的443。要自己啟用為服務。
   + 我們需要用他的FTP SERVER。占用FTP的21。要自己啟用為服務。
   + 預設登入管理者維持不設定密碼，僅有本機可以連線到。
   + 建立登入的使用者「CGRG_S007」及密碼「4500」，根目錄「C:\R2MS_Lite_Smart_Scheduler\Local」，權限唯讀。
