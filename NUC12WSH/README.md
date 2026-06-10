@@ -77,8 +77,14 @@
   + 選擇那個用autounattend.xml創建的帳號，開始等他跑「歡迎」之類的初始化設定。然後螢幕可能就整個黑掉了。黑掉很久沒反應就拔掉電源，重新開機。
   + 自動登入後就出現熟悉的桌面了。臨時帳號也不會存在。
   + 後續照標準方式繼續設定。
-+ 安裝LITE相關軟體包含排程及看CSV。建立捷徑。
++ 安裝LITE相關軟體(Driver)、(R2MS_Lite_Smart_Scheduler_v20260525a)及(R2MS_Lite_CSV_Viewer_v20251027a):
+  + 安裝到:「C:\R2MS_Lite_Smart_Scheduler\R2MS_Lite_Smart_Scheduler.exe」。建立應用程式的捷徑到桌面。
+  + 安裝到:「C:\R2MS_Lite_Smart_Scheduler\R2MS_Lite_CSV_Viewer.exe」。建立應用程式的捷徑到桌面。
+  + 建立Local資料夾: 「C:\R2MS_Lite_Smart_Scheduler\Local」。
 + RUSTDESK弄好。
+  + 修改「設定>一般」:「啟動時檢查更新」取消勾選。這會修改%AppData%\RustDesk\config\RustDesk_local.toml檔案。會增加一個「enable-check-update = 'N'」的文字。
+  + 修改「設定>安全」:「允許遠端使用者更改設定」勾選，連接埠保持預設不修改。這會修改%AppData%\RustDesk\config\RustDesk2.toml檔案。會增加一個「allow-remote-config-modification = 'Y'」的文字。「啟用IP直接存取」勾選，連接埠保持預設不修改。這會修改%AppData%\RustDesk\config\RustDesk2.toml檔案。會增加一個「direct-server =14 'Y'」的文字。
+  + 修改「設定>網路」:「ID伺服器」填「140.115.21.20」。這會修改%AppData%\RustDesk\config\RustDesk.toml檔案。這會修改%AppData%\RustDesk\config\RustDesk2.toml檔案。這會修改C:\Windows\ServiceProfiles\LocalService\AppData\Roaming\RustDesk\config\RustDesk2.toml檔案。
 + 安裝XAMPP(xampp-windows-x64-7.4.27-2-VC15-installer.exe):
   + 我們需要用他的HTTP SERVE，占用HTTP的80與HTTPS的443。要自己啟用為服務。
   + 我們需要用他的FTP SERVER。占用FTP的21。要自己啟用為服務。
