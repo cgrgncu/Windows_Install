@@ -94,6 +94,7 @@
   + 我們需要用他的FTP SERVER。占用FTP的21。要自己啟用為服務。
   + 預設登入管理者維持不設定密碼，僅有本機可以連線到。
   + 建立登入的使用者「CGRG_S007」及密碼「4500」，根目錄「C:\R2MS_Lite_Smart_Scheduler\Local」，權限唯讀。
+  + 要開放應用程式「C:\xampp\FileZillaFTP\FileZillaServer.exe」通過防火牆。
 + 安裝SFTPGO(sftpgo_v2.7.3_windows_x86_64.exe):
   + 我們只要用他的SFTP，占用SFTP的2022。另外其管理介面會占用8080。
   + 安裝好後，第一次登入進入管理介面:
