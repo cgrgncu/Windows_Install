@@ -84,21 +84,25 @@
   + 進去「Users」設定:
     + http://localhost:8080/web/admin/user
     + 按右上的「add」。
-    + 建立使用者的「Username」填「CGRG_S007」，「Password」填「4500」，「File system>Root directory」填「C:\R2MS_Lite_Smart_Scheduler\Local」。記得要SAVE。
-    + 到這裡，8080網頁可以開啟，可以用使用者「CGRG_S007」登入進去。登進去會擁有所有的讀寫權限。
-    + 找到剛剛建立的使用者「CGRG_S007」，然後最右邊下拉選單選擇「Edit」。
+    + 建立使用者的「Username」填「CGRG_S006」，「Password」填「4500」，「File system>Root directory」填「C:\R2MS_Lite_Smart_Scheduler\Local」。記得要SAVE。
+    + 到這裡，8080網頁可以開啟，可以用使用者「CGRG_S006」登入進去。登進去會擁有所有的讀寫權限。
+    + 找到剛剛建立的使用者「CGRG_S006」，然後最右邊下拉選單選擇「Edit」。
     + 修改「ACLs>Permissions」移除原有的「*」，用下拉選單選出「list」與「download」。記得要SAVE。
-    + 到這裡，8080網頁可以開啟，可以用使用者「CGRG_S007」登入進去。登進去只有唯讀權限。
+    + 到這裡，8080網頁可以開啟，可以用使用者「CGRG_S006」登入進去。登進去只有唯讀權限。
 + 在桌面上放一個README.txt
 ```
 FTP已經設定用戶:
-USERNAME: CGRG_S007
+USERNAME: CGRG_S006
 PASSWORD: 4500
 唯讀
 根目錄為Local資料夾
 
+SFTP已經設定管理員:
+USERNAME: admin
+PASSWORD: 1234
+
 SFTP已經設定用戶:
-USERNAME: CGRG_S007
+USERNAME: CGRG_S006
 PASSWORD: 4500
 唯讀
 根目錄為Local資料夾
