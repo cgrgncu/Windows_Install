@@ -38,27 +38,10 @@
   + 網址: https://www.intel.com.tw/content/www/tw/zh/download/727998/intel-network-adapter-driver-for-microsoft-windows-11.html
     + 安裝檔名稱: Wired_driver_31.2.2_x64.zip
 + INTEL Thunderbolt 驅動:
-  + Intel(R) Corporation System Driver Update (1.41.1423.0)
-    + 來源: Microsoft Update Catalog 搜尋 「Intel Thunderbolt Controller」
-    + 檔案名稱: 349e5f5c-4639-4547-912e-6fdf9b25812a_824f1de00c6e7a41288502d07547c2ab93370692.cab
-    + 製作安裝BATCH:
-    ```
-    @echo off
-    :: 切換至批次檔所在目錄
-    cd /d "%~dp0"
-    
-    :: 1. 解壓縮 Intel Thunderbolt 官方 .cab 離線包至臨時資料夾
-    expand -F:* "349e5f5c-4639-4547-912e-6fdf9b25812a_824f1de00c6e7a41288502d07547c2ab93370692.cab" ".\TB_Driver"
-    
-    :: 2. 使用 pnputil 自動掃描子資料夾並靜默注入所有 .inf 驅動
-    pnputil /add-driver ".\TB_Driver\*.inf" /subdirs /install
-    
-    :: 3. 清理解壓臨時資料夾（可選）
-    rd /s /q ".\TB_Driver"
-    
-    echo Intel Thunderbolt 驅動注入完成！
-    pause
-    ```
+  + DELL封裝的 Intel-Thunderbolt-Controller-Driver:
+    + _TBTC4_WIN_1.41.1335.0_A14_02
+    + 來源: https://www.dell.com/support/home/zh-tw/drivers/driversdetails?driverid=tbtc4
+    + 檔案名稱: Intel-Thunderbolt-Controller-Driver_TBTC4_WIN_1.41.1335.0_A14_02.exe    
 
 ### 離線安裝
 + 安裝家用版
@@ -71,6 +54,11 @@
 ### 安裝驅動
 + 必須使用管理員身分執行BATCH檔。
 + 安裝完重新開機
++ 安裝網路卡驅動。
++ 安裝完重新開機
++ 安裝Thunderbolt驅動
++ 安裝完重新開機
+
 
 ### 手動優化WINDOWS
 + 確認暫停更新
@@ -88,7 +76,7 @@
 + 小算盤釘選到工作列。
 + 安裝「VirtualBox6.1」。
 + https://recordscreen.io/ 加到我的最愛
-+ 安裝「office 2019」。
++ 安裝「office 2016」。
 
 ### 設定BIOS
 + 「Power,Performance and Cooling > Secondary Power Settings > After Power Failure」 = 「Last State」
