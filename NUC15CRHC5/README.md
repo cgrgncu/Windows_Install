@@ -31,7 +31,46 @@
     + 「啟用IP直接存取」勾選，連接埠保持預設不修改。這會修改%AppData%\RustDesk\config\RustDesk2.toml檔案。會增加一個「direct-server =14 'Y'」的文字。
   + 修改「設定>網路」:
     + 「ID伺服器」填「140.115.21.20」。這會修改%AppData%\RustDesk\config\RustDesk.toml檔案。這會修改%AppData%\RustDesk\config\RustDesk2.toml檔案。這會修改C:\Windows\ServiceProfiles\LocalService\AppData\Roaming\RustDesk\config\RustDesk2.toml檔案。
++ 安裝XAMPP(xampp-windows-x64-7.4.27-2-VC15-installer.exe):
+  + 我們需要用他的HTTP SERVER，占用HTTP的80與HTTPS的443。要自己啟用為服務。
+  + 我們需要用他的FTP SERVER。占用FTP的21。要自己啟用為服務。
+  + 預設登入管理者維持不設定密碼，僅有本機可以連線到。
+  + 建立登入的使用者「R2MS_Lite_S006」及密碼「4500」，根目錄「C:\R2MS_Lite_Smart_Scheduler\Local」，權限唯讀。
+  + 要開放應用程式「C:\xampp\FileZillaFTP\FileZillaServer.exe」通過防火牆。
++ 安裝SFTPGO(sftpgo_v2.7.3_windows_x86_64.exe):
+  + 我們只要用他的SFTP，占用SFTP的2022。另外其管理介面會占用8080。
+  + 安裝好後，第一次登入進入管理介面:
+    + http://localhost:8080/web/admin
+    + 會被要求設定管理員帳號密碼。建議管理員帳號為「admin」密碼為「1234」。
+  + 目前為止我不確定原因但似乎我沒有被防火牆擋住，因此區域網路的人就可以連接8080網頁。
+  + 立刻進去檢查「Admin」設定:
+    + http://localhost:8080/web/admin/managers
+    + 找到剛剛建立的使用者「admin」，然後最右邊下拉選單選擇「Edit」。
+    + 要把這個帳號限制只有本機才能登入成功:
+      + 在「Allowed IP/Mask」填入「127.0.0.1/32,::1/128」。
+      + 到這裡，雖然8080網頁可以開啟，但是管理員帳號只有本機才登入的進去。
+  + 進去「Users」設定:
+    + http://localhost:8080/web/admin/user
+    + 按右上的「add」。
+    + 建立使用者的「Username」填「R2MS_Lite_S006」，「Password」填「4500」，「File system>Root directory」填「C:\R2MS_Lite_Smart_Scheduler\Local」。記得要SAVE。
+    + 到這裡，8080網頁可以開啟，可以用使用者「R2MS_Lite_S006」登入進去。登進去會擁有所有的讀寫權限。
+    + 找到剛剛建立的使用者「R2MS_Lite_S006」，然後最右邊下拉選單選擇「Edit」。
+    + 修改「ACLs>Permissions」移除原有的「*」，用下拉選單選出「list」與「download」。記得要SAVE。
+    + 到這裡，8080網頁可以開啟，可以用使用者「R2MS_Lite_S006」登入進去。登進去只有唯讀權限。
++ 在桌面上放一個README.txt
+```
+FTP已經設定用戶:
+USERNAME: R2MS_Lite_S006
+PASSWORD: 4500
+唯讀
+根目錄為Local資料夾
 
+SFTP已經設定用戶:
+USERNAME: R2MS_Lite_S006
+PASSWORD: 4500
+唯讀
+根目錄為Local資料夾
+```
 ### USER#2
 + 命名為USER，之後再改名字。
 + 電腦主機Serial Number: 
