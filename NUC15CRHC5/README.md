@@ -79,7 +79,7 @@
 + 安裝「office 2016」。
 
 ### 設定BIOS
-+ 「Power,Performance and Cooling > Secondary Power Settings > After Power Failure」 = 「Last State」
++ 「Power > After Power Failure」 = 「Last State」
 
 ### 連接網路後開始部分設定
 + 之前沒安裝到「Chrome」的話記得裝一下。
