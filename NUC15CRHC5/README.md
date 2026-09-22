@@ -37,7 +37,28 @@
 + INTEL網路卡驅動:
   + 網址: https://www.intel.com.tw/content/www/tw/zh/download/727998/intel-network-adapter-driver-for-microsoft-windows-11.html
     + 安裝檔名稱: Wired_driver_31.2.2_x64.zip
-  
++ INTEL Thunderbolt 驅動:
+  + Intel(R) Corporation System Driver Update (1.41.1423.0)
+    + 來源: Microsoft Update Catalog 搜尋 「Intel Thunderbolt Controller」
+    + 檔案名稱: 349e5f5c-4639-4547-912e-6fdf9b25812a_824f1de00c6e7a41288502d07547c2ab93370692.cab
+    + 製作安裝BATCH:
+    ```
+    @echo off
+    :: 切換至批次檔所在目錄
+    cd /d "%~dp0"
+    
+    :: 1. 解壓縮 Intel Thunderbolt 官方 .cab 離線包至臨時資料夾
+    expand -F:* "349e5f5c-4639-4547-912e-6fdf9b25812a_824f1de00c6e7a41288502d07547c2ab93370692.cab" ".\TB_Driver"
+    
+    :: 2. 使用 pnputil 自動掃描子資料夾並靜默注入所有 .inf 驅動
+    pnputil /add-driver ".\TB_Driver\*.inf" /subdirs /install
+    
+    :: 3. 清理解壓臨時資料夾（可選）
+    rd /s /q ".\TB_Driver"
+    
+    echo Intel Thunderbolt 驅動注入完成！
+    pause
+    ```
 
 ### 離線安裝
 + 安裝家用版
