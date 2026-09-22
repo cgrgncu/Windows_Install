@@ -19,6 +19,10 @@
 + WINDOWS專業版啟用序號: 8BKN3-4RXJV-JYVJD-CXMQY-39MP4
   + 記得啟用。
 + 2026-09-22重灌
++ 安裝LITE相關軟體(Driver)、(R2MS_Lite_Smart_Scheduler_v20260525a)及(R2MS_Lite_CSV_Viewer_v20251027a):
+  + 安裝到:「C:\R2MS_Lite_Smart_Scheduler\R2MS_Lite_Smart_Scheduler.exe」。建立應用程式的捷徑到桌面。
+  + 安裝到:「C:\R2MS_Lite_Smart_Scheduler\R2MS_Lite_CSV_Viewer.exe」。建立應用程式的捷徑到桌面。
+  + 建立Local資料夾: 「C:\R2MS_Lite_Smart_Scheduler\Local」。
 + RUSTDESK弄好。
   + 修改「設定>一般」:
     + 「啟動時檢查更新」取消勾選。這會修改%AppData%\RustDesk\config\RustDesk_local.toml檔案。會增加一個「enable-check-update = 'N'」的文字。
