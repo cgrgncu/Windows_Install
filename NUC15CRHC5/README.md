@@ -65,12 +65,17 @@ PASSWORD: 4500
 唯讀
 根目錄為Local資料夾
 
+SFTP已經設定管理員:
+USERNAME: admin
+PASSWORD: 1234
+
 SFTP已經設定用戶:
 USERNAME: R2MS_Lite_S006
 PASSWORD: 4500
 唯讀
 根目錄為Local資料夾
 ```
+
 ### USER#2
 + 命名為USER，之後再改名字。
 + 電腦主機Serial Number: 
