@@ -32,8 +32,12 @@
     + REF: https://github.com/memstechtips/UnattendedWinstall
     + REF2: https://schneegans.de/windows/unattend-generator/
 + ASUS驅動包: 
-  + 網址: 
-  + 只裝LAN的驅動，剩下連上網路之後Windows自動安裝。
+  + 網址: https://www.asus.com/tw/displays-desktops/nucs/nuc-mini-pcs/asus-nuc-15-pro/helpdesk_download?model2Name=ASUS-NUC-15-Pro-Mini-PC-NUC15CRH
+    + 安裝檔名稱: NUC15CR_RPL-R_Driver_INF_Pack_ww45-2025.zip
++ INTEL網路卡驅動:
+  + 網址: https://www.intel.com.tw/content/www/tw/zh/download/727998/intel-network-adapter-driver-for-microsoft-windows-11.html
+    + 安裝檔名稱: Wired_driver_31.2.2_x64.zip
+  
 
 ### 離線安裝
 + 安裝家用版
