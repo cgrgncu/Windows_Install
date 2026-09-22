@@ -11,10 +11,13 @@
 
 ## 主機清單
 ### USER#1
-+ 命名為USER，之後再改名字。改為R2MS_Lite_S006
++ 安裝時先把使用者名稱設為「USER」，之後再改名字。
+  + 電腦名稱改為「R2MS_Lite_S006」。
+  + 使用者名稱改為「S006」。
 + 電腦主機Serial Number: W1ARYZ00Z376SX4
 + 變壓器條碼: E82231019291H55213548HK
 + WINDOWS專業版啟用序號: 8BKN3-4RXJV-JYVJD-CXMQY-39MP4
+  + 記得啟用。
 + 2026-09-22重灌
 + RUSTDESK弄好。
   + 修改「設定>一般」:
