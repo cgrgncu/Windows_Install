@@ -11,10 +11,19 @@
 
 ## 主機清單
 ### USER#1
-+ 命名為USER，之後再改名字。
++ 命名為USER，之後再改名字。改為R2MS_Lite_S006
 + 電腦主機Serial Number: W1ARYZ00Z376SX4
 + 變壓器條碼: E82231019291H55213548HK
-+ WINDOWS專業版啟用序號: 8BKN3-4RXJV-JYVJD-CXMQY-39MP4 
++ WINDOWS專業版啟用序號: 8BKN3-4RXJV-JYVJD-CXMQY-39MP4
++ 2026-09-22重灌
++ RUSTDESK弄好。
+  + 修改「設定>一般」:
+    + 「啟動時檢查更新」取消勾選。這會修改%AppData%\RustDesk\config\RustDesk_local.toml檔案。會增加一個「enable-check-update = 'N'」的文字。
+  + 修改「設定>安全」:
+    + 「允許遠端使用者更改設定」勾選，連接埠保持預設不修改。這會修改%AppData%\RustDesk\config\RustDesk2.toml檔案。會增加一個「allow-remote-config-modification = 'Y'」的文字。
+    + 「啟用IP直接存取」勾選，連接埠保持預設不修改。這會修改%AppData%\RustDesk\config\RustDesk2.toml檔案。會增加一個「direct-server =14 'Y'」的文字。
+  + 修改「設定>網路」:
+    + 「ID伺服器」填「140.115.21.20」。這會修改%AppData%\RustDesk\config\RustDesk.toml檔案。這會修改%AppData%\RustDesk\config\RustDesk2.toml檔案。這會修改C:\Windows\ServiceProfiles\LocalService\AppData\Roaming\RustDesk\config\RustDesk2.toml檔案。
 
 ### USER#2
 + 命名為USER，之後再改名字。
