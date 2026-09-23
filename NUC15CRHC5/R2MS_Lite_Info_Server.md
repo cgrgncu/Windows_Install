@@ -19,4 +19,11 @@
   ```
   echo hello | curl.exe -s -S --connect-timeout 2 -m 4 --no-keepalive -u R2MS_Lite_Info_Server:4500 -T - "ftp://cgrg.synology.me:10021/home/%date:~0,4%%date:~5,2%%date:~8,2%_%time:~0,2%%time:~3,2%%time:~6,2%.txt"
   ```
-  echo hello | curl.exe -s -S --connect-timeout 2 -m 4 --no-keepalive -u R2MS_Lite_Info_Server:45002931 -T - "ftp://cgrg.synology.me:10021/home/test.txt"
+
+
+
+### 取得ID
++ 取得RustDesk ID
+```
+"C:\Program Files\RustDesk\rustdesk.exe" --get-id | more > "C:\R2MS_Lite_Smart_Scheduler\RustDeskID_now.txt" 
+```
