@@ -29,7 +29,7 @@
 ```
 
 ### 同步 RustDesk_ID 
-+ Sync_RustDesk_ID_v20260923a.bat  !!!請注意填寫正確FTP連線資訊!!!
++ Sync_RustDesk_ID_v20260923a.bat  !!!請注意填寫正確FTP連線資訊!!!以及自訂的名稱!!!
 ```
 ::**************************************************************************
 ::   Name: Sync_RustDesk_ID_v20260923a.bat
@@ -42,7 +42,7 @@
 ::                2. 本機維持 RustDeskID_now.txt 與 RustDeskID_old.txt 比對，避免重複上傳。
 ::                3. curl 上傳整合連線與總傳輸 TIMEOUT，防止網路異常或帳密錯誤時掛起。
 ::                4. 【放置路徑與目錄結構範例】：
-::                   本檔案必須固定存放於 C:\R2MS_Lite_Smart_Scheduler\Sync_RustDesk_ID\
+::                   本檔案必須固定存放於 C:\Sync_RustDesk_ID\
 ::                   
 ::                   目錄完整結構如下：
 ::                   C:\Sync_RustDesk_ID\
@@ -57,17 +57,24 @@
 setlocal enabledelayedexpansion
 
 :: ==========================================
+:: 【自定義設定區】
+:: 請在此處手動指定這台電腦的專屬資料夾名稱（建議對應機殼貼紙或資產編號）
+:: 檔案將會上傳至 NAS 的： /home/[CUSTOM_ID]/ RustDesk_[年月日]_[時分秒].txt
+:: ==========================================
+set "CUSTOM_ID=MyPC_01"
+
+:: ==========================================
 :: 設定檔與路徑定義
 :: ==========================================
 set "RUSTDESK_EXE=C:\Program Files\RustDesk\rustdesk.exe"
-set "WORK_DIR=C:\R2MS_Lite_Smart_Scheduler\Sync_RustDesk_ID"
+set "WORK_DIR=C:\Sync_RustDesk_ID"
 
 set "NOW_FILE=%WORK_DIR%\RustDeskID_now.txt"
 set "OLD_FILE=%WORK_DIR%\RustDeskID_old.txt"
 
 set "FTP_USER=R2MS_Lite_Info_Server"
 set "FTP_PASS=4500"
-set "FTP_HOST=ftp://cgrg.synology.me:10021/home/"
+set "FTP_HOST=ftp://cgrg.synology.me:10021/home/%CUSTOM_ID%/"
 
 :: 1. 確保工作目錄存在
 if not exist "%WORK_DIR%" mkdir "%WORK_DIR%"
@@ -99,7 +106,7 @@ if exist "%OLD_FILE%" (
 
 echo [狀態] 偵測到 ID 變更或首次執行，開始上傳至 NAS...
 
-:: 6. 產生時間戳記檔名並經由管道上傳至 FTP
+:: 6. 產生時間戳記檔名
 set "YYYY=%date:~0,4%"
 set "MM=%date:~5,2%"
 set "DD=%date:~8,2%"
@@ -108,9 +115,10 @@ if "%HH:~0,1%"==" " set "HH=0%HH:~1,1%"
 set "MIN=%time:~3,2%"
 set "SS=%time:~6,2%"
 
-set "REMOTE_FILENAME=RustDesk_%COMPUTERNAME%_%YYYY%%MM%%DD%_%HH%%MIN%%SS%.txt"
+set "REMOTE_FILENAME=RustDesk_%YYYY%%MM%%DD%_%HH%%MIN%%SS%.txt"
 
-type "%NOW_FILE%" | curl.exe -sS --connect-timeout 2 -m 4 --no-keepalive -u %FTP_USER%:%FTP_PASS% -T - "%FTP_HOST%%REMOTE_FILENAME%"
+:: 7. 透過 curl 上傳標準輸入，並指定完整的遠端目標 URL 包含檔名
+type "%NOW_FILE%" | curl.exe -sS --ftp-create-dirs --connect-timeout 2 -m 4 --no-keepalive -u %FTP_USER%:%FTP_PASS% -T - "%FTP_HOST%%REMOTE_FILENAME%"
 
 if %ERRORLEVEL% equ 0 (
     echo [成功] FTP 上傳完成：%REMOTE_FILENAME%
