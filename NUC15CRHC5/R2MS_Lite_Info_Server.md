@@ -38,19 +38,6 @@
 ::   Version: v20260923a
 ::   Description: 自動擷取本機 RustDesk ID 並比對異動，僅在 ID 變更或首次執行時
 ::                將時間戳記檔名上傳至 Synology NAS FTP 伺服器。
-::                1. 透過 PIPE 結合 | more 強制刷出 Console 緩衝區以精準取得 ID。
-::                2. 本機維持 RustDeskID_now.txt 與 RustDeskID_old.txt 比對，避免重複上傳。
-::                3. curl 上傳整合連線與總傳輸 TIMEOUT，防止網路異常或帳密錯誤時掛起。
-::                4. 【放置路徑與目錄結構範例】：
-::                   本檔案必須固定存放於 C:\Sync_RustDesk_ID\
-::                   
-::                   目錄完整結構如下：
-::                   C:\Sync_RustDesk_ID\
-::                   ├── Sync_RustDesk_ID_v20260923a.bat          (本核心腳本)
-::                   ├── Install_Sync_RustDesk_ID_Task.bat        (自動部署排程)
-::                   ├── Uninstall_Sync_RustDesk_ID_Task.bat      (自動移除排程)
-::                   ├── RustDeskID_now.txt                       (自動生成: 最新擷取 ID)
-::                   └── RustDeskID_old.txt                       (自動生成: 已上傳基準 ID)
 ::**************************************************************************
 
 @echo off
@@ -61,7 +48,7 @@ setlocal enabledelayedexpansion
 :: 請在此處手動指定這台電腦的專屬資料夾名稱（建議對應機殼貼紙或資產編號）
 :: 檔案將會上傳至 NAS 的： /home/[CUSTOM_ID]/ RustDesk_[年月日]_[時分秒].txt
 :: ==========================================
-set "CUSTOM_ID=MyPC_01"
+set "CUSTOM_ID=R2MS_Lite_S006"
 
 :: ==========================================
 :: 設定檔與路徑定義
@@ -73,7 +60,7 @@ set "NOW_FILE=%WORK_DIR%\RustDeskID_now.txt"
 set "OLD_FILE=%WORK_DIR%\RustDeskID_old.txt"
 
 set "FTP_USER=R2MS_Lite_Info_Server"
-set "FTP_PASS=4500"
+set "FTP_PASS=45002931"
 set "FTP_HOST=ftp://cgrg.synology.me:10021/home/%CUSTOM_ID%/"
 
 :: 1. 確保工作目錄存在
