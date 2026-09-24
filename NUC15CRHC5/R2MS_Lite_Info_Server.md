@@ -499,10 +499,134 @@
   ```
 
 
-### 同步 RustDesk_ID 
-+ Sync_RustDesk_ID_v20260923a.bat  !!!請注意填寫正確FTP連線資訊!!!以及自訂的名稱!!!
+### 同步 R2MS_Lite_Status 
++ Sync_R2MS_Lite_Status_v20260924a.bat  !!!請注意填寫正確HTTP連線資訊!!!以及自訂的名稱!!!
 ```
+::**************************************************************************
+::   Name: Sync_R2MS_Lite_Status_v20260924a.bat
+::   Copyright: 
+::   Author: HsiupoYeh 
+::   Version: v20260924a
+::   Description: 1. 自動擷取本機系統資訊、使用者、RustDesk ID 與 C 槽硬碟空間，
+::                   並透過 HTTP 完整回報至 Synology NAS PHP 接收端。
+::                2. 【放置路徑與目錄結構範例】：
+::                   本檔案必須固定存放於 C:\Sync_R2MS_Lite_Status\
+::                   
+::                   目錄完整結構如下：
+::                   C:\Sync_R2MS_Lite_Status\
+::                   ├── Sync_R2MS_Lite_Status_v20260924a.bat      (本核心邏輯腳本)
+::                   ├── Install_Sync_R2MS_Lite_Status_Task.bat    (自動部署腳本)
+::                   ├── Uninstall_Sync_R2MS_Lite_Status_Task.bat  (移除腳本)
+::                   ├── DiskC_Space_now.txt                       (自動生成: 最新擷取 硬碟空間)
+::                   ├── DiskC_Space_old.txt                       (自動生成: 最新擷取 硬碟空間)
+::                   ├── RustDeskID_now.txt                        (自動生成: 最新擷取 ID)
+::                   └── RustDeskID_old.txt                        (自動生成: 已上傳基準 ID)
+::**************************************************************************
 
+@echo off
+setlocal enabledelayedexpansion
+
+:: ==========================================
+:: 【自定義設定區】
+:: 請在此處手動指定這台電腦的專屬自訂裝置名稱
+:: ==========================================
+set "CUSTOM_DEVICE_ID=R2MS_Lite_S006"
+
+:: ==========================================
+:: 設定檔與路徑定義
+:: ==========================================
+set "RUSTDESK_EXE=C:\Program Files\RustDesk\rustdesk.exe"
+set "WORK_DIR=C:\Sync_R2MS_Lite_Status"
+
+set "NOW_FILE=%WORK_DIR%\RustDeskID_now.txt"
+set "OLD_FILE=%WORK_DIR%\RustDeskID_old.txt"
+
+set "DISK_C_NOW_FILE=%WORK_DIR%\DiskC_Space_now.txt"
+set "DISK_C_OLD_FILE=%WORK_DIR%\DiskC_Space_old.txt"
+
+:: PHP 接收端的網址
+set "API_URL=https://cgrg.synology.me/R2MS_Lite_Info_Server/write_R2MS_Lite_Info.php"
+
+:: 1. 確保工作目錄存在
+if not exist "%WORK_DIR%" mkdir "%WORK_DIR%"
+
+:: 2. 嘗試取得最新 RustDesk ID（若失敗則保持空白）
+set "CURRENT_RUSTDESK_ID="
+if exist "%RUSTDESK_EXE%" (
+    for /f "tokens=*" %%i in ('"%RUSTDESK_EXE%" --get-id') do (
+        set "CURRENT_RUSTDESK_ID=%%i"
+        goto :break_rustdesk
+    )
+)
+:break_rustdesk
+
+:: 將本次 RustDesk ID 寫入 NOW 檔
+echo !CURRENT_RUSTDESK_ID!> "%NOW_FILE%"
+
+:: 處理 RustDesk 舊 ID 數值與建立 OLD 檔
+set "OLD_RUSTDESK_ID=None"
+if exist "%OLD_FILE%" (
+    for /f "tokens=*" %%j in (%OLD_FILE%) do (
+        set "OLD_RUSTDESK_ID=%%j"
+    )
+) else (
+    copy /y "%NOW_FILE%" "%OLD_FILE%" >nul
+    set "OLD_RUSTDESK_ID=!CURRENT_RUSTDESK_ID!"
+)
+
+:: ==========================================
+:: 3. 取得 C 槽剩餘硬碟空間 (Bytes，極速且零效能負擔)
+:: ==========================================
+set "FREE_SPACE_C_NOW=0"
+for /f "tokens=2 delims==" %%k in ('wmic logicaldisk where "DeviceID='C:'" get FreeSpace /format:value 2^>nul') do (
+    set "FREE_SPACE_C_NOW=%%k"
+)
+set "FREE_SPACE_C_NOW=%FREE_SPACE_C_NOW:~0,-1%"
+if "%FREE_SPACE_C_NOW%"=="" set "FREE_SPACE_C_NOW=0"
+
+:: 將本次 C 槽硬碟空間寫入 NOW 檔
+echo %FREE_SPACE_C_NOW%> "%DISK_C_NOW_FILE%"
+
+:: 處理 C 槽硬碟空間舊紀錄與建立 OLD 檔
+set "FREE_SPACE_C_OLD=0"
+if exist "%DISK_C_OLD_FILE%" (
+    for /f "tokens=*" %%m in (%DISK_C_OLD_FILE%) do (
+        set "FREE_SPACE_C_OLD=%%m"
+    )
+) else (
+    copy /y "%DISK_C_NOW_FILE%" "%DISK_C_OLD_FILE%" >nul
+    set "FREE_SPACE_C_OLD=%FREE_SPACE_C_NOW%"
+)
+
+echo [狀態] 準備回報系統、RustDesk 與 C 槽磁碟空間狀態至 NAS...
+
+:: ==========================================
+:: 4. 組合成符合你們原本規範的單行 JSON 字串
+:: ==========================================
+set "JSON_DATA={\"computer_name\":\"%COMPUTERNAME%\",\"user_name\":\"%USERNAME%\",\"custom_device_id\":\"%CUSTOM_DEVICE_ID%\",\"rustdesk_id_now\":\"%CURRENT_RUSTDESK_ID%\",\"rustdesk_id_old\":\"%OLD_RUSTDESK_ID%\",\"disk_c_free_now\":\"%FREE_SPACE_C_NOW%\",\"disk_c_free_old\":\"%FREE_SPACE_C_OLD%\"}"
+
+:: ==========================================
+:: 5. 透過 curl 發送 HTTP GET 請求
+:: ==========================================
+curl.exe -sS --get "%API_URL%" --data-urlencode "R2MS_Lite_Info=%JSON_DATA%" --connect-timeout 2 -m 4
+
+if %ERRORLEVEL% equ 0 (
+    echo.
+    echo [成功] 資料回報完成。
+    
+    :: 回報成功後，將本次的檔案更新到 OLD 檔，作為下一次比對的基準
+    copy /y "%NOW_FILE%" "%OLD_FILE%" >nul
+    copy /y "%DISK_C_NOW_FILE%" "%DISK_C_OLD_FILE%" >nul
+    
+    exit /b 0
+) else (
+    echo.
+    echo [失敗] HTTP 請求失敗，錯誤碼：%ERRORLEVEL%
+    exit /b 1
+)
+
+endlocal
+```
 
 
 
