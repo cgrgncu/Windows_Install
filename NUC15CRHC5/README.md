@@ -24,6 +24,49 @@
   + 安裝到:「C:\R2MS_Lite_Smart_Scheduler\R2MS_Lite_CSV_Viewer.exe」。建立應用程式的捷徑到桌面。
   + 建立Local資料夾: 「C:\R2MS_Lite_Smart_Scheduler\Local」。
 + RUSTDESK弄好。
+  + 如果遇到不能安裝，運行以下「停用管理員核准模式.bat」:
+  ```
+  ::**************************************************************************
+  ::   Name: 停用管理員核准模式.bat
+  ::   Author: HsiupoYeh 
+  ::   Version: v20260923a
+  ::   Description: 自動修改 Windows 登錄檔以停用 UAC 管理員核准模式。
+  ::                1. 自動提升至 Administrator 權限。
+  ::                2. 修改 HKLM 系統機碼，將 EnableLUA 設為 0。
+  ::                3. 停用後需要手動重新開機才能完整套用變更。
+  ::                4. 【放置路徑與注意事項】：
+  ::                   本檔案可放置於任意目錄執行，執行後會強制關閉系統管理員核准模式。
+  ::**************************************************************************
+  @echo off
+  :: 自動取得管理員權限
+  >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
+  if '%errorlevel%' NEQ '0' (
+      echo 正在要求系統管理員權限...
+      goto UACPrompt
+  ) else ( goto gotAdmin )
+  :UACPrompt
+      echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"
+      echo UAC.ShellExecute "%~s0", "", "", "runas", 1 >> "%temp%\getadmin.vbs"
+      "%temp%\getadmin.vbs"
+      exit /B
+  :gotAdmin
+      if exist "%temp%\getadmin.vbs" ( del "%temp%\getadmin.vbs" )
+      pushd "%~dp0"
+  
+  :: -----------------------------------------
+  :: 核心：修改登錄檔（停用管理員核准模式）
+  :: -----------------------------------------
+  echo 正在停用「所有系統管理員均以管理員核准模式執行」...
+  reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableLUA" /t REG_DWORD /d 0 /f
+  
+  echo.
+  echo ===================================================
+  echo  設定已完成！請【手動重新開機】以套用變更。
+  echo ===================================================
+  echo.
+  pause
+  ```  
+  + 基本上去改好「RustDesk.toml」等等相關檔案並覆蓋到目錄中，重新啟動就好了。 
   + 修改「設定>一般」:
     + 「啟動時檢查更新」取消勾選。這會修改%AppData%\RustDesk\config\RustDesk_local.toml檔案。會增加一個「enable-check-update = 'N'」的文字。
   + 修改「設定>安全」:
@@ -31,6 +74,7 @@
     + 「啟用IP直接存取」勾選，連接埠保持預設不修改。這會修改%AppData%\RustDesk\config\RustDesk2.toml檔案。會增加一個「direct-server =14 'Y'」的文字。
   + 修改「設定>網路」:
     + 「ID伺服器」填「140.115.21.20」。這會修改%AppData%\RustDesk\config\RustDesk.toml檔案。這會修改%AppData%\RustDesk\config\RustDesk2.toml檔案。這會修改C:\Windows\ServiceProfiles\LocalService\AppData\Roaming\RustDesk\config\RustDesk2.toml檔案。
++ 安裝「R2MS_Lite遠端資訊伺服器」。
 + 安裝XAMPP(xampp-windows-x64-7.4.27-2-VC15-installer.exe):
   + 我們需要用他的HTTP SERVER，占用HTTP的80與HTTPS的443。要自己啟用為服務。
   + 我們需要用他的FTP SERVER。占用FTP的21。要自己啟用為服務。
