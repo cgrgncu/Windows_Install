@@ -25,6 +25,24 @@
               box-shadow: 0 4px 12px rgba(0,0,0,0.05);
               background: #ffffff;
           }
+          /* 針對 iOS Safari 最佳化的正圓形問號按鈕樣式 */
+          .btn-help-circle {
+              width: 26px;
+              height: 26px;
+              min-width: 26px;
+              min-height: 26px;
+              padding: 0;
+              border-radius: 50% !important;
+              display: inline-flex !important;
+              align-items: center !important;
+              justify-content: center !important;
+              font-size: 14px;
+              font-weight: 600;
+              line-height: 1 !important;
+              -webkit-appearance: none; /* 消除 iOS 按鈕預設圓角變形 */
+              box-sizing: border-box;
+              flex-shrink: 0;
+          }
       </style>
   </head>
   <body>
@@ -175,7 +193,6 @@
                       
                       echo "<div class='mb-3'>";
                       echo "<label for='web_auth_code' class='form-label fw-bold text-secondary'>請輸入裝置 <strong>[" . htmlspecialchars($custom_id, ENT_QUOTES, 'UTF-8') . "]</strong> 的網頁認證碼：</label>";
-                      // 改用 type="text" 並加上 autocomplete="off" 防止系統當作密碼處理與自動聚焦
                       echo "<input type='text' class='form-control' id='web_auth_code' name='web_auth_code' autocomplete='off' required>";
                       echo "</div>";
                       echo "<button type='submit' class='btn btn-danger w-100'>確認驗證並查詢</button>";
@@ -189,7 +206,6 @@
                       
                       echo "<div class='mb-3'>";
                       echo "<label for='web_auth_code' class='form-label fw-bold text-secondary'>裝置 <strong>[" . htmlspecialchars($custom_id, ENT_QUOTES, 'UTF-8') . "]</strong> 需要網頁認證碼才能查詢：</label>";
-                      // 改用 type="text" 並加上 autocomplete="off" 防止系統當作密碼處理與自動聚焦
                       echo "<input type='text' class='form-control' id='web_auth_code' name='web_auth_code' placeholder='請輸入網頁認證碼' autocomplete='off' required>";
                       echo "</div>";
                       echo "<button type='submit' class='btn btn-primary w-100'>送出認證碼查詢</button>";
@@ -256,7 +272,12 @@
   
                                   echo "<div class='p-3 mb-3 rounded' style='background-color: #e8f5e9;'><span style='color:green; font-weight:bold;'>成功讀取 [<strong>" . htmlspecialchars($custom_id, ENT_QUOTES, 'UTF-8') . "</strong>] 在 <strong>$query_date</strong> 的所有回報紀錄，共計 <strong>" . count($all_records) . "</strong> 筆：</span></div>";
   
-                                  echo "<h4 class='fw-bold text-dark mb-3'>$query_date 完整回報紀錄與狀態：</h4>";
+                                  // 標題旁邊加上 iOS 相容的圓形問號按鈕
+                                  echo "<div class='d-flex justify-content-between align-items-center mb-3'>";
+                                  echo "<h4 class='fw-bold text-dark m-0'>$query_date 完整回報紀錄與狀態：</h4>";
+                                  echo "<button type='button' class='btn btn-outline-secondary btn-help-circle' data-bs-toggle='modal' data-bs-target='#infoModal' title='帳戶差異說明'>?</button>";
+                                  echo "</div>";
+  
                                   echo "<ul class='list-group mb-4'>";
   
                                   $count = 1;
@@ -314,6 +335,29 @@
                       <a href="https://example.com" target="_blank" class='text-decoration-none'>官方介紹頁面</a>
                   </div>
   
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  <!-- 說明 Modal 視窗 -->
+  <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title fw-bold" id="infoModalLabel">登入使用者名稱判讀說明</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body small text-secondary">
+                  <p>在紀錄中看到的<strong>登入使用者</strong>名稱，會因執行方式不同而有所差異：</p>
+                  <ul class="mb-3">
+                      <li class="mb-2"><strong>一般名稱（例如 <code>S006</code>）：</strong><br>代表這是你手動點兩下執行批次檔時，以當前桌面互動登入的使用者身分執行的紀錄。</li>
+                      <li><strong>結尾帶錢字號（例如 <code>R2MS_LITE_S006$</code>）：</strong><br>代表這是透過 Windows <strong>工作排程器</strong>在背景自動觸發執行的紀錄。此時系統沒有對應到桌面的真人互動登入，因此會抓到該主機本身的系統機器帳戶身分。</li>
+                  </ul>
+                  <p class="mb-0 text-muted">兩者皆能正常回報裝置狀態與硬碟空間，純粹代表「手動執行」與「背景自動排程」的系統身分差異。</p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">關閉</button>
               </div>
           </div>
       </div>
