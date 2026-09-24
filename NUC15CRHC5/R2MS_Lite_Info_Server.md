@@ -628,11 +628,160 @@ if %ERRORLEVEL% equ 0 (
 endlocal
 ```
 
+### 工作排程器中安裝腳本
+```
+::**************************************************************************
+::  Name: Install_Sync_R2MS_Lite_Status_Task.bat
+::  Author: HsiupoYeh 
+::  Version: v20260924a
+::  Description: 自動部署 R2MS_Lite 狀態同步批次檔至 Windows 工作排程器。
+::               1. 自動提升至 Administrator 權限。
+::               2. 綁定 SYSTEM 帳號，開機未登入亦可執行。
+::               3. 設定每 1 小時輪詢一次（固定每小時 00 分執行），並自動觸發首次測試。
+::               4. 【放置路徑與目錄結構範例】：
+::                  本檔案必須固定存放於 C:\Sync_R2MS_Lite_Status\
+::                  
+::                  目錄完整結構如下：
+::                  C:\Sync_R2MS_Lite_Status\
+::                  ├── Sync_R2MS_Lite_Status_v20260924a.bat      (核心邏輯腳本)
+::                  ├── Install_Sync_R2MS_Lite_Status_Task.bat    (本安裝腳本)
+::                  ├── Uninstall_Sync_R2MS_Lite_Status_Task.bat  (自動移除腳本)
+::                  ├── DiskC_Space_now.txt                       (自動生成: 最新擷取 硬碟空間)
+::                  ├── DiskC_Space_old.txt                       (自動生成: 最新擷取 硬碟空間)
+::                  ├── RustDeskID_now.txt                        (自動生成: 最新擷取 ID)
+::                  └── RustDeskID_old.txt                        (自動生成: 已上傳基準 ID)
+::**************************************************************************
 
+@echo off
+setlocal enabledelayedexpansion
 
+:: 1. 檢查並自動取得 Administrator 權限
+net session >nul 2>&1
+if %errorLevel% neq 0 (
+    echo [提示] 正在取得系統管理員權限...
+    powershell -Command "Start-Process '%~0' -Verb RunAs"
+    exit /b
+)
 
+set "TASK_NAME=Sync_R2MS_Lite_Status"
+set "BAT_PATH=C:\Sync_R2MS_Lite_Status\Sync_R2MS_Lite_Status_v20260924a.bat"
+set "WORK_DIR=C:\Sync_R2MS_Lite_Status"
 
+echo ===================================================
+echo   開始部署 R2MS_Lite 狀態同步自動工作排程
+echo ===================================================
 
+:: 2. 檢查目標批次檔是否存在
+if not exist "%BAT_PATH%" (
+    echo [錯誤] 找不到目標批次檔：%BAT_PATH%
+    echo 請確認檔案已放置於 %WORK_DIR% 目錄下。
+    pause
+    exit /b 1
+)
+
+:: 3. 建立工作排程 (SYSTEM 帳號、每小時執行、指定 00 分起跑、最高權限)
+schtasks /create /tn "%TASK_NAME%" /tr "\"%BAT_PATH%\"" /sc hourly /mo 1 /st 00:00 /ru "SYSTEM" /rl HIGHEST /f >nul 2>&1
+
+set "CREATE_RET=%ERRORLEVEL%"
+
+if %CREATE_RET% neq 0 goto :FAIL
+
+echo [成功] 工作排程 [%TASK_NAME%] 已成功建立！
+echo [資訊] 執行帳號: SYSTEM (開機未登入亦可執行)
+echo [資訊] 執行頻率: 每 1 小時 (固定每小時 00 分)
+echo.
+echo 正在進行首次手動觸發測試...
+schtasks /run /tn "%TASK_NAME%" >nul 2>&1
+echo [完成] 已觸發測試，請至 NAS 或工作目錄確認上傳結果。
+echo.
+echo ---------------------------------------------------
+echo [狀態] 目前工作排程登錄資訊：
+echo ---------------------------------------------------
+schtasks /query /tn "%TASK_NAME%"
+echo ---------------------------------------------------
+goto :END
+
+:FAIL
+echo [錯誤] 工作排程建立失敗，錯誤碼：%CREATE_RET%
+
+:END
+echo ===================================================
+echo 部署作業完成。
+pause
+endlocal
+```
+
+### 工作排程器中移除腳本
+```
+::**************************************************************************
+::  Name: Uninstall_Sync_R2MS_Lite_Status_Task.bat
+::  Author: HsiupoYeh 
+::  Version: v20260924a
+::  Description: 安全刪除 R2MS_Lite 狀態同步自動工作排程。
+::               1. 自動提升至 Administrator 權限。
+::               2. 安全刪除工作排程器中的 Sync_R2MS_Lite_Status 工作。
+::               3. 【放置路徑與目錄結構範例】：
+::                  本檔案必須固定存放於 C:\Sync_R2MS_Lite_Status\
+::                  
+::                  目錄完整結構如下：
+::                  C:\Sync_R2MS_Lite_Status\
+::                  ├── Sync_R2MS_Lite_Status_v20260924a.bat      (核心邏輯腳本)
+::                  ├── Install_Sync_R2MS_Lite_Status_Task.bat    (安裝腳本)
+::                  ├── Uninstall_Sync_R2MS_Lite_Status_Task.bat  (本移除腳本)
+::                  ├── DiskC_Space_now.txt                       (自動生成: 最新擷取 硬碟空間)
+::                  ├── DiskC_Space_old.txt                       (自動生成: 最新擷取 硬碟空間)
+::                  ├── RustDeskID_now.txt                        (自動生成: 最新擷取 ID)
+::                  └── RustDeskID_old.txt                        (自動生成: 已上傳基準 ID)
+::**************************************************************************
+
+@echo off
+setlocal enabledelayedexpansion
+
+:: 1. 檢查並自動取得 Administrator 權限
+net session >nul 2>&1
+if %errorLevel% neq 0 (
+    echo [提示] 正在取得系統管理員權限...
+    powershell -Command "Start-Process '%~0' -Verb RunAs"
+    exit /b
+)
+
+set "TASK_NAME=Sync_R2MS_Lite_Status"
+set "WORK_DIR=C:\Sync_R2MS_Lite_Status"
+
+echo ===================================================
+echo   開始移除 R2MS_Lite 狀態同步工作排程
+echo ===================================================
+
+:: 2. 檢查並刪除工作排程
+schtasks /query /tn "%TASK_NAME%" >nul 2>&1
+if %ERRORLEVEL% equ 0 (
+    schtasks /delete /tn "%TASK_NAME%" /f >nul 2>&1
+    if !ERRORLEVEL! equ 0 (
+        echo [成功] 工作排程 [%TASK_NAME%] 已順利移除。
+    ) else (
+        echo [錯誤] 刪除工作排程失敗。
+    )
+) else (
+    echo [提示] 系統中未發現 [%TASK_NAME%] 工作排程。
+)
+
+echo.
+echo ---------------------------------------------------
+echo [狀態] 目前工作排程狀態確認：
+echo ---------------------------------------------------
+schtasks /query /tn "%TASK_NAME%" 2>nul
+if %ERRORLEVEL% neq 0 (
+    echo [確認] 系統中已無此排程，工作已完全清除。
+)
+echo ---------------------------------------------------
+
+echo ===================================================
+echo 移除作業完畢。
+pause
+endlocal
+```
+
+-----------------------------------------------------------------
 
 
 
