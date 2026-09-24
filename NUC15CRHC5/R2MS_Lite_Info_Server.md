@@ -225,6 +225,9 @@
                       if (!file_exists($target_log_file)) {
                           echo "<div class='alert alert-warning mt-3' role='alert'>指定日期 (<strong>$query_date</strong>) 尚無裝置 <strong>[$custom_id]</strong> 的回報紀錄檔案。</div>";
                       } else {
+                          // 讀取原始檔案內容供 Log Modal 使用
+                          $raw_log_content = file_get_contents($target_log_file);
+  
                           $lines = file($target_log_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
                           if ($lines === false || empty($lines)) {
                               echo "<div class='alert alert-warning mt-3' role='alert'>指定日期 (<strong>$query_date</strong>) 的日誌檔案內容為空。</div>";
@@ -272,10 +275,13 @@
   
                                   echo "<div class='p-3 mb-3 rounded' style='background-color: #e8f5e9;'><span style='color:green; font-weight:bold;'>成功讀取 [<strong>" . htmlspecialchars($custom_id, ENT_QUOTES, 'UTF-8') . "</strong>] 在 <strong>$query_date</strong> 的所有回報紀錄，共計 <strong>" . count($all_records) . "</strong> 筆：</span></div>";
   
-                                  // 標題旁邊加上 iOS 相容的圓形問號按鈕
+                                  // 標題旁邊加上「Log 按鈕」與「iOS 相容的圓形問號按鈕」
                                   echo "<div class='d-flex justify-content-between align-items-center mb-3'>";
                                   echo "<h4 class='fw-bold text-dark m-0'>$query_date 完整回報紀錄與狀態：</h4>";
+                                  echo "<div class='d-flex align-items-center gap-2'>";
+                                  echo "<button type='button' class='btn btn-outline-dark btn-sm text-nowrap' data-bs-toggle='modal' data-bs-target='#rawLogModal'>Log</button>";
                                   echo "<button type='button' class='btn btn-outline-secondary btn-help-circle' data-bs-toggle='modal' data-bs-target='#infoModal' title='帳戶差異說明'>?</button>";
+                                  echo "</div>";
                                   echo "</div>";
   
                                   echo "<ul class='list-group mb-4'>";
@@ -339,6 +345,27 @@
           </div>
       </div>
   </div>
+  
+  <!-- Log 檢視 Modal 視窗 -->
+  <?php if (isset($raw_log_content)): ?>
+  <div class="modal fade" id="rawLogModal" tabindex="-1" aria-labelledby="rawLogModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+              <div class="modal-header bg-dark text-white">
+                  <h5 class="modal-title fw-bold" id="rawLogModalLabel">Log 內容 (<?php echo htmlspecialchars($query_date, ENT_QUOTES, 'UTF-8'); ?>)</h5>
+                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body bg-light">
+                  <!-- 保持不換行，超出部分透過水平卷軸檢視 -->
+                  <pre class="m-0 p-3 bg-white border rounded text-dark small" style="white-space: pre; overflow-x: auto; max-height: 500px;"><?php echo htmlspecialchars($raw_log_content, ENT_QUOTES, 'UTF-8'); ?></pre>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">關閉</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  <?php endif; ?>
   
   <!-- 說明 Modal 視窗 -->
   <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
