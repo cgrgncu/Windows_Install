@@ -6,7 +6,7 @@
 + 製作方式:
   + 在「web」目錄下建立一個「R2MS_Lite_Info_Server」資料夾
   + 建立「index.php」
-  ```
+  ```php
   <!DOCTYPE html>
   <html lang="zh-TW">
   <head>
@@ -395,7 +395,7 @@
   </html>
   ```
   + 建立「devices.json」
-  ```
+  ```json
   [
     {
       "id": "MyPC_01",
@@ -414,7 +414,7 @@
   ]
   ```
   + 建立「write_R2MS_Lite_Info.php」
-  ```
+  ```php
   <?php
   //**************************************************************************
   //   Name: write_R2MS_Lite_Info.php
