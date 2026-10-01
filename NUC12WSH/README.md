@@ -81,8 +81,7 @@
       + 運行「Install_Sync_RustDesk_ID_Task.bat」，再去工作排程器查詢有沒有出現排程，記得按重新整理。
       + 如果有運行成功可以從網頁查詢ID。
       + REF: https://github.com/cgrgncu/Windows_Install/blob/main/NUC15CRHC5/R2MS_Lite_Info_Server.md
-
-
+  + 安裝印表機(京瓷 ECOSYS MA2600cfx)驅動。
 
 ### R2MS_Lite_S000
 + R2MS Lite 儀器生產測試專用主機
