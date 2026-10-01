@@ -75,7 +75,12 @@
       + 「啟用IP直接存取」勾選，連接埠保持預設不修改。這會修改%AppData%\RustDesk\config\RustDesk2.toml檔案。會增加一個「direct-server =14 'Y'」的文字。
     + 修改「設定>網路」:
       + 「ID伺服器」填「140.115.21.20」。這會修改%AppData%\RustDesk\config\RustDesk.toml檔案。這會修改%AppData%\RustDesk\config\RustDesk2.toml檔案。這會修改C:\Windows\ServiceProfiles\LocalService\AppData\Roaming\RustDesk\config\RustDesk2.toml檔案。
-
+    + 安裝「R2MS_Lite遠端資訊伺服器」。
+      + 把檔案放到正確資料夾「Sync_R2MS_Lite_Status」中。
+      + 改好「Sync_RustDesk_ID_v20260923a.bat」中的「set "CUSTOM_ID=CGRG_PRINTER_1"」。
+      + 運行「Install_Sync_RustDesk_ID_Task.bat」，再去工作排程器查詢有沒有出現排程，記得按重新整理。
+      + 如果有運行成功可以從網頁查詢ID。
+      + REF: https://github.com/cgrgncu/Windows_Install/blob/main/NUC15CRHC5/R2MS_Lite_Info_Server.md
 
 
 
