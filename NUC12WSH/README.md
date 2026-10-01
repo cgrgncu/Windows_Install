@@ -10,7 +10,7 @@
 
 
 ## 主機清單
-### CGRG_PRINTER
+### CGRG_PRINTER_1
 + CGRG 印表機專用主機
 + 電腦主機Serial Number: S4ARAC01F4655TF
 + 變壓器S/N: B3VW43N02D6 ，側邊條碼: 0432-05MF200412002627 ，電線條碼: 1411-028K000X1239S0210
@@ -18,7 +18,7 @@
 + 財產編號: 3140101-03-40097
 + 2026-10-01重灌
   + 安裝時先把使用者名稱設為「USER」，之後再改名字。(目前使用的autounattend.xml已經這樣設定好了)
-    + 電腦名稱改為「CGRG_PRINTER」。
+    + 電腦名稱改為「CGRG_PRINTER_1」。
     + 「開始」>「Windows 系統」>「控制台」>「使用者帳戶>變更帳戶類型」，把使用者名稱改為「PRINTER」。
   + 安裝R2MS_LITE相關軟體(Driver)、(R2MS_Lite_Smart_Scheduler_v20260525a)及(R2MS_Lite_CSV_Viewer_v20251027a):
     + 安裝到:「C:\R2MS_Lite_Smart_Scheduler\R2MS_Lite_Smart_Scheduler.exe」。建立應用程式的捷徑到桌面。
