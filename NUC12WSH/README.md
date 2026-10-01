@@ -235,6 +235,7 @@ PASSWORD: 4500
 + 小畫家釘選到工作列。
 + 小算盤釘選到工作列。
 + 工作排程器釘選到工作列。
++ 啟用舊版Windows相片檢視器。
 + 安裝「VirtualBox6.1」。
 + https://recordscreen.io/ 加到我的最愛
 + 安裝「office 2019」。
