@@ -135,7 +135,7 @@ PASSWORD: 4500
 + 使用工具: rufus-4.5.exe
   + 下載網址 https://rufus.ie/zh_TW/
   + 使用標準版即可，若有詢問是否要檢查線上更新可略過。
-+ Wondows ISO: 用微軟工具下載的Windows.ISO -> 這是家用版
++ Wondows ISO: SW_DVD9_Win_Pro_10_22H2.19_64BIT_ChnTrad_Pro_Ent_EDU_N_MLF_X23-74684.ISO
   + Win 10 22H2
   + 使用autounattend.xml
     + REF: https://github.com/memstechtips/UnattendedWinstall
@@ -153,7 +153,7 @@ PASSWORD: 4500
     + 檔案名稱: Intel-Thunderbolt-Controller-Driver_TBTC4_WIN_1.41.1335.0_A14_02.exe    
 
 ### 離線安裝
-+ 安裝家用版
++ 安裝專業版
 + 不要連接網路
 + 隱私權關閉
 
