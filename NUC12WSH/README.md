@@ -234,6 +234,7 @@ PASSWORD: 4500
 + 安裝「Notepad++」。釘選到工作列。關閉自動更新。
 + 小畫家釘選到工作列。
 + 小算盤釘選到工作列。
++ 工作排程器釘選到工作列。
 + 安裝「VirtualBox6.1」。
 + https://recordscreen.io/ 加到我的最愛
 + 安裝「office 2019」。
