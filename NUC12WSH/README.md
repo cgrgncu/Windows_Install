@@ -238,7 +238,7 @@ PASSWORD: 4500
 + 啟用舊版Windows相片檢視器。
 + 安裝「VirtualBox6.1」。
 + https://recordscreen.io/ 加到我的最愛
-+ 安裝「office 2019」。
++ 安裝「office 2016」。
 
 ### 設定BIOS
 + 「Power,Performance and Cooling > Secondary Power Settings > After Power Failure」 = 「Last State」
