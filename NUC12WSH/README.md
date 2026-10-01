@@ -20,7 +20,10 @@
   + 安裝時先把使用者名稱設為「USER」，之後再改名字。(目前使用的autounattend.xml已經這樣設定好了)
     + 電腦名稱改為「CGRG_PRINTER」。
     + 「開始」>「Windows 系統」>「控制台」>「使用者帳戶>變更帳戶類型」，把使用者名稱改為「PRINTER」。
-
+  + 安裝R2MS_LITE相關軟體(Driver)、(R2MS_Lite_Smart_Scheduler_v20260525a)及(R2MS_Lite_CSV_Viewer_v20251027a):
+    + 安裝到:「C:\R2MS_Lite_Smart_Scheduler\R2MS_Lite_Smart_Scheduler.exe」。建立應用程式的捷徑到桌面。
+    + 安裝到:「C:\R2MS_Lite_Smart_Scheduler\R2MS_Lite_CSV_Viewer.exe」。建立應用程式的捷徑到桌面。
+    + 建立Local資料夾: 「C:\R2MS_Lite_Smart_Scheduler\Local」。
 
 ### R2MS_Lite_S000
 + R2MS Lite 儀器生產測試專用主機
