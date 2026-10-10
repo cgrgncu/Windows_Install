@@ -61,11 +61,17 @@
 + 家用版開啟gpedit功能。用管理員身分執行。
 + 啟用舊版Windows相片檢視器。
 
-### 匯出一個暫時預備的版本
+### 匯出一個初始但未完成的版本
++ 匯出前記得把ISO掛載移除。
 + 匯出格式: OVF 1.0
 + MAC位址原則: 刪除
++ 輸出檔名: Win10_Home_OpenCodeDesktop.ova
 
 
-### 安裝
+### 重新匯入到正確的名稱
++ 匯入名稱修改為 Win10_Home_OpenCodeDesktop_1
 
+### 後續安裝步驟
++ 維持無網路
++ 啟用Windows
 
