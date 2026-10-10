@@ -97,7 +97,8 @@
   + 管理頁面: https://console.tailscale.com/admin/machines
   + 申請並登入管理帳號，這裡用cgrg.service帳號。
   + 安裝tailscale-setup-1.104.1.exe
-  + 安裝好按下「Get Started」。再按下「Sign in to your metwork」。會被引導到網頁登入請選用GMAIL登入。
+  + 安裝好按下「Get Started」。再按下「Sign in to your metwork」。會被引導到網頁登入請選用GMAIL登入。這裡應該會被引導到Edge，用完可以清除所有快取。
   + 登入成功後會引導到網頁，請按下Connect。然後就可以關閉網頁。軟體中也按下「Close」，安裝完成畫面也按下「Close」。
   + 回到管理頁面進行設定:
-    + 注意，VM中的瀏覽器很舊，可能管理頁面會有一些問題，請使用正常電腦的新版瀏覽器。 
+    + 注意，VM中的瀏覽器很舊，可能管理頁面會有一些問題，請使用Chrome瀏覽器。建議不要用VM中的瀏覽器設定，避免殘留帳號密碼資料。
+    + 使用可信任的非虛擬機電腦瀏覽器登入管理頁面，找到虛擬機電腦(OpenCodeDesktopVM1)對應的裝置，把IP改為:「100.80.0.x」。改好就可以關閉網頁。
