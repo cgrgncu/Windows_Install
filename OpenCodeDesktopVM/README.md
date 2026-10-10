@@ -93,4 +93,5 @@
 + 安裝tailscale
   + 官網: https://tailscale.com/
   + 管理頁面: https://console.tailscale.com/admin/machines
+  + 申請並登入管理帳號，這裡用cgrg.service帳號。
   + 安裝tailscale-setup-1.104.1.exe
