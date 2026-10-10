@@ -129,3 +129,9 @@
     + 重新啟動電腦。
   + 這預設就會占用HTTP的PORT:80。
   + 可用有安裝tailscale的手機測試，能否利用100.80.0.x訪問虛擬機電腦的網頁。若成功表示設定正確。
+  + 部屬OpenCode配對的php程式:
+    + 複製PHP檔案到「C:\xampp\htdocs」中:
+      + C:\xampp\htdocs\index.php  --> 覆蓋舊的
+      + C:\xampp\htdocs\OpenCodePair.php  --> 新建立的
+      + C:\xampp\htdocs\OpenCodeUpload.php  --> 新建立的
+  + 可用有安裝tailscale的手機測試，能否利用100.80.0.x訪問虛擬機電腦的網頁，並依照指示配對。若成功就可以在手機網頁上同步操作
