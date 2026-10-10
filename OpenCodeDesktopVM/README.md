@@ -103,3 +103,12 @@
     + 注意，VM中的瀏覽器很舊，可能管理頁面會有一些問題，請使用Chrome瀏覽器。建議不要用VM中的瀏覽器設定，避免殘留帳號密碼資料。
     + 使用可信任的非虛擬機電腦瀏覽器登入管理頁面，找到虛擬機電腦(OpenCodeDesktopVM1)對應的裝置，把IP改為:「100.80.0.x」。改好就可以關閉網頁。
   + 可用有安裝tailscale的手機測試，能否利用100.80.0.x登入虛擬機電腦的RustDesk。若成功表示設定正確。
++ 安裝opencode-desktop-win-x64
+  + 安裝版本: opencode-desktop-win-x64_v2.0.26.0
+  + 用命令提示字元開放伺服器能支援配對功能(其實就是本來只有綁定127.0.0.1不受防火牆限制，現在要改綁定0.0.0.0):
+  ```
+  set "CLI=%LOCALAPPDATA%\Programs\@opencodedesktop\resources\opencode-cli.exe"
+  "%CLI%" service set hostname 0.0.0.0
+  "%CLI%" service start
+  ```
+  + 過程中第一次運作會觸發防火牆問題，請都打勾並允許。
