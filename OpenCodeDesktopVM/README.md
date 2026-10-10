@@ -95,3 +95,4 @@
   + 管理頁面: https://console.tailscale.com/admin/machines
   + 申請並登入管理帳號，這裡用cgrg.service帳號。
   + 安裝tailscale-setup-1.104.1.exe
+  + 安裝好按下「Get Started」。再按下「Sign in to your metwork」。會被引導到網頁登入請選用GMAIL登入。登入成功後會引導到網頁，請按下Connect。然後就可以關閉網頁。
