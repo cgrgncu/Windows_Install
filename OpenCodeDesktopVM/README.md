@@ -112,3 +112,5 @@
   "%CLI%" service start
   ```
   + 過程中第一次運作會觸發防火牆問題，請都打勾並允許。
++ 安裝XAMPP
+  + 安裝版本: xampp-windows-x64-7.4.27-2-VC15-installer.exe
