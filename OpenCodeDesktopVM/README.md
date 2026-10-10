@@ -105,6 +105,12 @@
   + 可用有安裝tailscale的手機測試，能否利用100.80.0.x登入虛擬機電腦的RustDesk。若成功表示設定正確。
 + 安裝opencode-desktop-win-x64
   + 安裝版本: opencode-desktop-win-x64_v2.0.26.0
+  + 手動建立資料夾: 「C:\OpenCode_Projects\000\」
+  + 開啟桌面版，新增一個專案並指定剛剛建立的資料夾「C:\OpenCode_Projects\000\」。
+  + 選擇模型「Muse Spark 1.3 Free」。
+  + 選擇模型速度從「Default」改為「Low」。
+  + 跟他對話，「請使用繁體中文回答」，他有回話就表示正常。
+  + 可修改「設定>偏好設定>自訂代理程式」為啟用，這樣對話還可以選擇Plan或Build。
   + 用命令提示字元開放伺服器能支援配對功能(其實就是本來只有綁定127.0.0.1不受防火牆限制，現在要改綁定0.0.0.0):
   ```
   set "CLI=%LOCALAPPDATA%\Programs\@opencodedesktop\resources\opencode-cli.exe"
