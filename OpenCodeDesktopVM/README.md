@@ -90,4 +90,7 @@
   ```
   "C:\Program Files\RustDesk\RustDesk.exe" "--password" "1234"
   ```
-
++ 安裝tailscale
+  + 官網: https://tailscale.com/
+  + 管理頁面: https://console.tailscale.com/admin/machines
+  + 安裝tailscale-setup-1.104.1.exe
