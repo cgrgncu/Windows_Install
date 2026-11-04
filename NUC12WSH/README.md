@@ -372,6 +372,7 @@ PASSWORD: 4500
 + 「Power,Performance and Cooling > Secondary Power Settings > After Power Failure」 = 「Last State」
 
 ### 連接網路後開始部分設定
++ 把「Edge」用「設定」>「關於」>「更新」，更新到最新版。
 + 之前沒安裝到「Chrome」的話記得裝一下。
   + 安裝「rustdesk」，並設定ID Server。自訂ID清單:
     + CGRG_PRINTER
