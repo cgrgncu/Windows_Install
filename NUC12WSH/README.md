@@ -91,7 +91,7 @@
 + 財產編號: 3140101-03-40095
 + 2026-11-04重灌
   + 安裝時先把使用者名稱設為「USER」，之後再改名字。(目前使用的autounattend.xml已經這樣設定好了)
-    + 電腦名稱改為「R2MS_Lite_S000」。
+    + 「設定」>「系統」>「關於」>「重新命名此電腦」為「R2MS-Lite-S000」。需要重新啟動。
     + 「左下角按下右鍵」>「電腦管理」>「本機使用者和群組」>「使用者」，把「USER」改為「R2MS_Lite_S000」。
   + 安裝R2MS_LITE相關軟體(Driver)、(R2MS_Lite_Smart_Scheduler_v20260525a)及(R2MS_Lite_CSV_Viewer_v20251027a):
     + 安裝到:「C:\R2MS_Lite_Smart_Scheduler\R2MS_Lite_Smart_Scheduler.exe」。建立應用程式的捷徑到桌面。
