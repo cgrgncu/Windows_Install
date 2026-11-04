@@ -89,6 +89,73 @@
 + 變壓器S/N: B3VW43N02DN ，側邊條碼: 0432-05MF200412002644 ，電線條碼: 1411-028K000X1239S0544
 + 財產單據: 11309A3071
 + 財產編號: 3140101-03-40095
++ 2026-10-01重灌
+  + 安裝時先把使用者名稱設為「USER」，之後再改名字。(目前使用的autounattend.xml已經這樣設定好了)
+    + 電腦名稱改為「R2MS_Lite_S000」。
+    + 「左下角按下右鍵」>「電腦管理」>「本機使用者和群組」>「使用者」，把「USER」改為「R2MS_Lite_S000」。
+  + 安裝R2MS_LITE相關軟體(Driver)、(R2MS_Lite_Smart_Scheduler_v20260525a)及(R2MS_Lite_CSV_Viewer_v20251027a):
+    + 安裝到:「C:\R2MS_Lite_Smart_Scheduler\R2MS_Lite_Smart_Scheduler.exe」。建立應用程式的捷徑到桌面。
+    + 安裝到:「C:\R2MS_Lite_Smart_Scheduler\R2MS_Lite_CSV_Viewer.exe」。建立應用程式的捷徑到桌面。
+    + 建立Local資料夾: 「C:\R2MS_Lite_Smart_Scheduler\Local」。
+  + RUSTDESK弄好。
+    + 如果遇到不能安裝，運行以下「停用管理員核准模式.bat」:
+    ```
+    ::**************************************************************************
+    ::   Name: 停用管理員核准模式.bat
+    ::   Author: HsiupoYeh 
+    ::   Version: v20260923a
+    ::   Description: 自動修改 Windows 登錄檔以停用 UAC 管理員核准模式。
+    ::                1. 自動提升至 Administrator 權限。
+    ::                2. 修改 HKLM 系統機碼，將 EnableLUA 設為 0。
+    ::                3. 停用後需要手動重新開機才能完整套用變更。
+    ::                4. 【放置路徑與注意事項】：
+    ::                   本檔案可放置於任意目錄執行，執行後會強制關閉系統管理員核准模式。
+    ::**************************************************************************
+    @echo off
+    :: 自動取得管理員權限
+    >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
+    if '%errorlevel%' NEQ '0' (
+        echo 正在要求系統管理員權限...
+        goto UACPrompt
+    ) else ( goto gotAdmin )
+    :UACPrompt
+        echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"
+        echo UAC.ShellExecute "%~s0", "", "", "runas", 1 >> "%temp%\getadmin.vbs"
+        "%temp%\getadmin.vbs"
+        exit /B
+    :gotAdmin
+        if exist "%temp%\getadmin.vbs" ( del "%temp%\getadmin.vbs" )
+        pushd "%~dp0"
+    
+    :: -----------------------------------------
+    :: 核心：修改登錄檔（停用管理員核准模式）
+    :: -----------------------------------------
+    echo 正在停用「所有系統管理員均以管理員核准模式執行」...
+    reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableLUA" /t REG_DWORD /d 0 /f
+    
+    echo.
+    echo ===================================================
+    echo  設定已完成！請【手動重新開機】以套用變更。
+    echo ===================================================
+    echo.
+    pause
+    ```  
+    + 基本上去改好「RustDesk.toml」等等相關檔案並覆蓋到目錄中，重新啟動就好了。 
+    + 修改「設定>一般」:
+      + 「啟動時檢查更新」取消勾選。這會修改%AppData%\RustDesk\config\RustDesk_local.toml檔案。會增加一個「enable-check-update = 'N'」的文字。
+    + 修改「設定>安全」:
+      + 「允許遠端使用者更改設定」勾選，連接埠保持預設不修改。這會修改%AppData%\RustDesk\config\RustDesk2.toml檔案。會增加一個「allow-remote-config-modification = 'Y'」的文字。
+      + 「啟用IP直接存取」勾選，連接埠保持預設不修改。這會修改%AppData%\RustDesk\config\RustDesk2.toml檔案。會增加一個「direct-server =14 'Y'」的文字。
+    + 修改「設定>網路」:
+      + 「ID伺服器」填「140.115.21.20」。這會修改%AppData%\RustDesk\config\RustDesk.toml檔案。這會修改%AppData%\RustDesk\config\RustDesk2.toml檔案。這會修改C:\Windows\ServiceProfiles\LocalService\AppData\Roaming\RustDesk\config\RustDesk2.toml檔案。
+    + 安裝「R2MS_Lite遠端資訊伺服器」。
+      + 把檔案放到正確資料夾「Sync_R2MS_Lite_Status」中。
+      + 改好「Sync_RustDesk_ID_v20260923a.bat」中的「set "CUSTOM_ID=CGRG_PRINTER_1"」。
+      + 運行「Install_Sync_RustDesk_ID_Task.bat」，再去工作排程器查詢有沒有出現排程，記得按重新整理。
+      + 如果有運行成功可以從網頁查詢ID。
+      + REF: https://github.com/cgrgncu/Windows_Install/blob/main/NUC15CRHC5/R2MS_Lite_Info_Server.md
+
+
 
 ### TAIP_DataCenter
 + 太平山地電阻法連續觀測站資料分析專用主機
